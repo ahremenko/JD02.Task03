@@ -1,0 +1,44 @@
+html, body{
+	margin-left:15px; margin-right:15px; 
+	padding:0px; 
+	font-family: Arial,sans-serif;
+}
+
+table {   
+	border-collapse:collapse;
+	border-bottom:1px solid gray;
+	font-family: Verdana,sans-serif;
+	width:100%;
+}
+ 
+th {
+	border-bottom:1px solid blue;
+	background:none repeat scroll 0 0 #d2d3dd;
+	padding:10px;
+	color: #FFFFFF;
+}
+
+tr {
+	border-top:1px solid gray;
+	text-align:center;	
+	
+}
+
+a {
+	font-family: Courier;
+	width:50%;
+}
+
+#header {width: 80%; background: #8080ff; margin-top: 0px; padding:15px 0px 15px 15px;}
+#menu {width: 80%; margin-left:0px; background-color: #c7e0ef  }
+#data {width: 80%; margin-left:0px }
+
+.error {
+	color: red
+}
+
+form {
+	margin-top: 10px;
+}
+
+ 

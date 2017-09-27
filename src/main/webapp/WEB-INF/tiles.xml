@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="base.definition"
+		template="/WEB-INF/view/layout.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header" value="/WEB-INF/view/header.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/view/menu.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/view/footer.jsp" />
+	</definition>
+
+	<definition name="newsmanagement" extends="base.definition">
+		<put-attribute name="title" value="NEWS Management. List of News" />
+		<put-attribute name="body" value="/WEB-INF/view/newsmanagement.jsp" />
+	</definition>
+
+	<definition name="about" extends="base.definition">
+		<put-attribute name="title" value="NEWS Management. About" />
+		<put-attribute name="body" value="/WEB-INF/view/about.jsp" />
+	</definition>
+	
+	<definition name="edit-form" extends="base.definition">
+		<put-attribute name="title" value="NEWS Management. Edit News" />
+		<put-attribute name="body" value="/WEB-INF/view/edit-form.jsp" />
+	</definition>
+	
+</tiles-definitions>
