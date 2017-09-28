@@ -1,5 +1,7 @@
 package by.htp.ahremenko.domain;
 
+import java.util.Date;
+
 //import java.util.GregorianCalendar;
 
 import javax.persistence.Column;
@@ -32,8 +34,8 @@ public class News {
 	@Column(name="content")
 	private String content;
 	
-	//@Column(name="create_date")
-	//private GregorianCalendar created;
+	@Column(name="create_date")
+	private Date created;
 	
 	@Column(name="rec_state")
 	private int active;
@@ -45,7 +47,7 @@ public class News {
 		this.title = title;
 		this.brief = brief;
 		this.content = content;
-		//this.created = new GregorianCalendar();
+		this.created = new Date();
 	}
 
 	public int getId() {
@@ -73,13 +75,13 @@ public class News {
 	}
 
 	
-	/*public GregorianCalendar getCreated() {
+	public Date getCreated() {
 		return created;
 	}
 
-	public void setCreated(GregorianCalendar created) {
+	public void setCreated(Date created) {
 		this.created = created;
-	}*/
+	}
 
 	public int getActive() {
 		return active;
@@ -100,7 +102,7 @@ public class News {
 
 	@Override
 	public String toString() {
-		return "News [id=" + id + ", title=" + title + ", brief=" + brief + ", active: " + active /*+ ", created:" + created*/ + "]";
+		return "News [id=" + id + ", title=" + title + ", brief=" + brief + ", active: " + active + ", created:" + created + "]";
 	}
 
 } 
