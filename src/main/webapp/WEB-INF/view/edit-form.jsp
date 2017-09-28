@@ -25,6 +25,7 @@
 				<input type="submit" value="<spring:message code="label.cancel"/>" name="btn_cancel" onclick="return true;"/>
 			</form:form>
 
+
  	</div>
  
     </tiles:putAttribute>
