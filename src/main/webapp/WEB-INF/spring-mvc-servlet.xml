@@ -14,7 +14,6 @@
         http://www.springframework.org/schema/tx 
 		http://www.springframework.org/schema/tx/spring-tx.xsd">
         
-
 	<!-- Add support for component scanning -->
 	<context:component-scan base-package="by.htp.ahremenko" />
 
@@ -45,13 +44,26 @@
         <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/rentcar?useSSL=false" />
         <property name="user" value="User1" />
         <property name="password" value="111111" /> 
-
-        <!-- these are connection pool properties for C3P0 -->
         <property name="minPoolSize" value="5" />
         <property name="maxPoolSize" value="20" />
         <property name="maxIdleTime" value="30000" />
 	</bean>  
 	
+	 <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+  		<property name="basename" value="classpath:messages" />
+  		<property name="defaultEncoding" value="UTF-8" />
+     </bean>
+ 
+	 <mvc:interceptors>
+  		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+   			<property name="paramName" value="lang" />
+  		</bean>
+ 	</mvc:interceptors>
+
+ 	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+  		<property name="defaultLocale" value="en" />
+ 	</bean>
+ 
     <!-- Setup Hibernate session factory -->
 	<bean id="sessionFactory1"
 		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">

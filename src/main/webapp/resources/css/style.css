@@ -29,9 +29,11 @@ a {
 	width:50%;
 }
 
-#header {width: 80%; background: #8080ff; margin-top: 0px; padding:15px 0px 15px 15px;}
+#header {width: 80%; background: #8080ff; margin-top: 0px; padding:10px 10px 10px 10px;}
 #menu {width: 80%; margin-left:0px; background-color: #c7e0ef  }
+#lang {text-align: right; padding:5px 5px 5px 5px;}
 #data {width: 80%; margin-left:0px }
+#footer {text-align: center; font-size: 0.7em}
 
 .error {
 	color: red

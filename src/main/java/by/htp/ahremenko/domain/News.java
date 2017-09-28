@@ -39,7 +39,9 @@ public class News {
 	
 	@Column(name="rec_state")
 	private int active;
-		
+	
+	//private boolean checked;
+	
 	public News() {
 	}
 
@@ -48,6 +50,7 @@ public class News {
 		this.brief = brief;
 		this.content = content;
 		this.created = new Date();
+		//this.setChecked(false);
 	}
 
 	public int getId() {
@@ -104,5 +107,13 @@ public class News {
 	public String toString() {
 		return "News [id=" + id + ", title=" + title + ", brief=" + brief + ", active: " + active + ", created:" + created + "]";
 	}
+
+	/*public boolean isChecked() {
+		return checked;
+	}
+
+	public void setChecked(boolean checked) {
+		this.checked = checked;
+	}*/
 
 } 

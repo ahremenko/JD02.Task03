@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 //import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 //import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.bind.annotation.RequestParam;
 
 import by.htp.ahremenko.domain.News;
 import by.htp.ahremenko.service.NewsService;
@@ -37,28 +37,7 @@ public class NewsController {
 	
 	@RequestMapping("/listNews")
 	public String processForm(Model theModel) {
-
-		/*SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(News.class)
-				.buildSessionFactory();
-
-		Session session = factory.openSession();
-
-		try {
-
-			 session.beginTransaction();
-		     
-			 //List<User> result = session.createQuery("FROM User").list();
-			 
-			 List<News> result = session.createQuery("from News").getResultList();
-
-			 session.getTransaction().commit();
-
-		     theModel.addAttribute("newsList", result);
-		     
-		} finally {
-			factory.close();
-		}
-		*/
+		
 		try {
 			List<News> result = newsService.getList(""); 
 			theModel.addAttribute("newsList", result);		
@@ -78,49 +57,50 @@ public class NewsController {
 		return "edit-form";
 	}
 	
-	@RequestMapping("/saveNews")
-	public String processForm(@Valid @ModelAttribute("news") News theNews, BindingResult theBindingResult, Model theModel) {
-		
-		/*
-		SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(News.class)
-				.buildSessionFactory();
-
-		Session session = factory.openSession();
-		
-		int newsId;
-		
-		newsId = theNews.getId();
-		
-				
+	@RequestMapping("/edit")
+	public String showEditForm(@RequestParam("newsId") int theId, Model theModel) {
 		try {
-			
-			session.beginTransaction();
-			if  ( newsId == 0 ) {
-				 // add 
-	  			 session.save(theNews); 
-			} else {
-				session.saveOrUpdate(theNews);
-			}
-			
- 			 session.getTransaction().commit();
- 			 
- 			 session.beginTransaction();
- 			 List<News> result = session.createQuery("from News").getResultList();
+			News theNews= newsService.fetchById(theId);
+			theModel.addAttribute("news", theNews); 
+			return "edit-form";
+		} catch (ServiceException e){
+			theModel.addAttribute("errorMessage", "Error: " + e.getMessage());
+			return "error";
+		}	
+		
+		//System.out.println("New User was put into model. [" + theUser.getId() +"]");
+		
+	}
+	
+	@RequestMapping("/saveNews")
+	public String processForm(@Valid @ModelAttribute("news") News theNews, Model theModel) {
 
-			 session.getTransaction().commit();
-
-		     theModel.addAttribute("newsList", result);
-		     System.out.println("News saved!");
-		} finally {
-			factory.close();
+		try {
+			newsService.save(theNews);
+			List<News> result = newsService.getList(""); 
+			theModel.addAttribute("newsList", result);		
+			return "newsmanagement";
+		} catch (ServiceException e){
+			theModel.addAttribute("errorMessage", "Error: " + e.getMessage());
+			return "error";
 		}
 		
-		if (theBindingResult.hasErrors()) {
-			return "edit-form";
-		} else {
+	}
+	
+	@RequestMapping("/delete")
+	public String deleteNews(@RequestParam("newsId") int theId, Model theModel) {
+		
+		System.out.println("Now ID: " + theId + " will be deleted.");
+		try {
+			newsService.remove(theId);
+			List<News> result = newsService.getList(""); 
+			theModel.addAttribute("newsList", result);		
 			return "newsmanagement";
-		}*/
-		return "newsmanagement";
+		} catch (ServiceException e){
+			theModel.addAttribute("errorMessage", "Error: " + e.getMessage());
+			return "error";
+		}
+		
 	}
 	
 	@RequestMapping("/about")	
