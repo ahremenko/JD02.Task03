@@ -10,21 +10,33 @@
 
    <div id="data">
 	
-		<br>
-			
-			<br>
+		<br><br>
 			<form:form action="saveNews" modelAttribute="news">
 				<form:hidden path="id" />
-				<spring:message code="label.title"/>: <form:input path="title" /> 
+				<form:hidden path="active" />
+				<spring:message code="label.title"/>
+				<br>
+				 <form:input path="title" size="50"/> 
 				<br>
 				<br>
-				<spring:message code="label.brief"/>: <form:input path="brief" /> <form:errors path="brief" cssClass="error" />
+				<spring:message code="label.created"/>
 				<br>
+				 <form:input path="created" size="10"/> <form:errors path="created" cssClass="error" />
+				<br>
+				<br>
+				<spring:message code="label.brief"/>
+				<br> 
+				 <form:textarea path="brief" cols="50" rows="3"/> <form:errors path="brief" cssClass="error"/>
+				<br>
+				<br>
+				<spring:message code="label.content"/>
+				<br>
+				 <form:textarea path="content"  cols="50" rows="5"/> <form:errors path="content" cssClass="error"/>
 				<br>
 				<input type="submit" value="<spring:message code="label.ok"/>" name="btn_save" />
-				<input type="submit" value="<spring:message code="label.cancel"/>" name="btn_cancel" onclick="return true;"/>
+				<a href="javascript:history.back()"><spring:message code="label.cancel" /></a>
+				<!--  input type="submit" value="<spring:message code="label.cancel"/>" name="btn_cancel" onclick="return true;"/ -->
 			</form:form>
-
 
  	</div>
  

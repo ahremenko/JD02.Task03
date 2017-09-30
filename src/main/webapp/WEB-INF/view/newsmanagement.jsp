@@ -3,14 +3,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
 <tiles:insertDefinition name="newsmanagement">
 
    <tiles:putAttribute name="body"> 
    <div id="data">
    
-	    <form:form action="delete" modelAttribute="news">
+	    <form action="delete" method="post">
 		<table>
 				<tr>
 					<th><spring:message code="label.title"/></th>
@@ -29,18 +29,20 @@
 				<tr>
 					<td>${news.title}</td>
 					<td>${news.brief}</td>
-					<td>${news.created}</td>
+					<td><fmt:formatDate value="${news.created}" pattern="dd/MM/yyyy"/></td>
 					<td><a href="${updateLink}"><spring:message code="label.edit"/></a>&nbsp;
-					    <form:checkbox path="newsId" value="${news.id}"/>
+						<input type="checkbox" name="selectedIds" value="${news.id}"/>
 					</td>
-					
 				</tr>	
 			</c:forEach>
 		</table>
-		<p>
-			<input type="submit" value="<spring:message code="label.delete"/>" name="btn_delete" />
-		</p>
-		</form:form>
+		
+         <input type="submit" value="<spring:message code="label.delete" />" onclick="return confirm('<spring:message code="label.aushure" />')" >
+                  
+         
+        </form>
+		
+		
  	</div>
  
     </tiles:putAttribute>

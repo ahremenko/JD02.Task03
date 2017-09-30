@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
+import org.apache.log4j.Logger;
 import by.htp.ahremenko.dao.NewsDAO;
 import by.htp.ahremenko.dao.exception.DAOException;
 import by.htp.ahremenko.domain.News;
@@ -15,7 +15,8 @@ import by.htp.ahremenko.service.exception.ServiceException;
 @Service
 public class NewsServiceImpl implements NewsService {
 
-	// need to inject customer dao
+	private static final Logger logger = Logger.getLogger(NewsServiceImpl.class);
+	
 	@Autowired
 	private NewsDAO newsDAO;
 	
@@ -27,7 +28,7 @@ public class NewsServiceImpl implements NewsService {
 			List<News> result = newsDAO.getList(searchingString);	
 		    return result; 
 		} catch ( DAOException e) {
-			//logger.error("Error on server:" + e.getMessage());
+			logger.error("Error on server:" + e.getMessage());
 			throw new ServiceException(e.getMessage());
 		}
    
@@ -37,13 +38,13 @@ public class NewsServiceImpl implements NewsService {
 	@Transactional
 	public void save(News theNews) throws ServiceException {
 		
-		// log
+		logger.info("Save NewsID:" + theNews.getId());
 		
 		// check
 		try {
 			newsDAO.save(theNews);
 		} catch ( DAOException e) {
-			//logger.error("Error on server:" + e.getMessage());
+			logger.error("Error on server:" + e.getMessage());
 			throw new ServiceException(e.getMessage());
 		}	
 	}
@@ -55,7 +56,7 @@ public class NewsServiceImpl implements NewsService {
 			News result = newsDAO.fetchById(theId);
 			return result;
 		} catch ( DAOException e) {
-			//logger.error("Error on server:" + e.getMessage());
+		    logger.error("Error on server:" + e.getMessage());
 			throw new ServiceException(e.getMessage());
 		}		
 	}
@@ -63,10 +64,17 @@ public class NewsServiceImpl implements NewsService {
 	//@Override
 	@Transactional
 	public void remove(int theId) throws ServiceException {
+		/*logger.info("Start deleting");		
+		if (newsIds == null) {
+			throw new IllegalArgumentException("Nothing to delete.");
+		}*/
 		try {
-			newsDAO.remove(theId);
+			//for (int theId : newsIds) {
+				//logger.info("Delete NewsID:" + theId);
+				newsDAO.remove(theId);
+			//}	
 		} catch ( DAOException e) {
-			//logger.error("Error on server:" + e.getMessage());
+			logger.error("Error on server:" + e.getMessage());
 			throw new ServiceException(e.getMessage());
 		}		
 	}

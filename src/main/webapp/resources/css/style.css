@@ -28,15 +28,15 @@ a {
 	font-family: Courier;
 	width:50%;
 }
-
-#header {width: 80%; background: #8080ff; margin-top: 0px; padding:10px 10px 10px 10px;}
+#trash {background: #8080ff}
+#header {width: 80%; margin-top: 0px; padding:3px 3px 3px 3px; border-bottom:1px solid gray}
 #menu {width: 80%; margin-left:0px; background-color: #c7e0ef  }
 #lang {text-align: right; padding:5px 5px 5px 5px;}
 #data {width: 80%; margin-left:0px }
 #footer {text-align: center; font-size: 0.7em}
 
 .error {
-	color: red
+	color: red; font-size: 0.7em
 }
 
 form {

@@ -8,8 +8,8 @@
   
   <url>http://maven.apache.org</url>
   
-    <name>My first lesson with maven</name>
-    <description>My first lesson project description</description>
+    <name>News Management</name>
+    <description>JD02.Task03.</description>
     <licenses>
     	<license>
     		<name>Apache Licence</name>
@@ -37,11 +37,18 @@
     <!-- hibernate.version>4.3.6.Final</hibernate.version -->
     <mysql.version>5.1.6</mysql.version>
     <apachetiles.version>3.0.7</apachetiles.version>
+    <org.aspectj-version>1.8.10</org.aspectj-version>
    </properties>
   
   
   
   <dependencies>
+  
+   		<dependency>
+      		<groupId>log4j</groupId>
+      		<artifactId>log4j</artifactId>
+      		<version>1.2.17</version>
+    	</dependency>
   
    		<dependency>
       		<groupId>junit</groupId>
@@ -130,6 +137,18 @@
             <artifactId>tiles-jsp</artifactId>
             <version>${apachetiles.version}</version>
         </dependency>
+
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>${org.aspectj-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${org.aspectj-version}</version>
+		</dependency>
 			
     
   </dependencies>
