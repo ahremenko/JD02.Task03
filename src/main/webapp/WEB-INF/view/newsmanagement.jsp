@@ -37,7 +37,7 @@
 			</c:forEach>
 		</table>
 		
-         <input type="submit" value="<spring:message code="label.delete" />" onclick="return confirm('<spring:message code="label.aushure" />')" >
+         <input type="submit" value="<spring:message code="label.delete" />" onclick="return confirm('<spring:message code="label.ausure" />')" >
                   
          
         </form>

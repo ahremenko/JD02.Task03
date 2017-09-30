@@ -38,9 +38,9 @@ public class NewsServiceImpl implements NewsService {
 	@Transactional
 	public void save(News theNews) throws ServiceException {
 		
-		logger.info("Save NewsID:" + theNews.getId());
+		//logger.info("Save NewsID:" + theNews.getId());
 		
-		// check
+		// TODO: check
 		try {
 			newsDAO.save(theNews);
 		} catch ( DAOException e) {
@@ -64,15 +64,9 @@ public class NewsServiceImpl implements NewsService {
 	//@Override
 	@Transactional
 	public void remove(int theId) throws ServiceException {
-		/*logger.info("Start deleting");		
-		if (newsIds == null) {
-			throw new IllegalArgumentException("Nothing to delete.");
-		}*/
+				
 		try {
-			//for (int theId : newsIds) {
-				//logger.info("Delete NewsID:" + theId);
 				newsDAO.remove(theId);
-			//}	
 		} catch ( DAOException e) {
 			logger.error("Error on server:" + e.getMessage());
 			throw new ServiceException(e.getMessage());
